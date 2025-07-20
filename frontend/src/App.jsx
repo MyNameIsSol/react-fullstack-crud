@@ -9,14 +9,24 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [modalMode, setModalMode] = useState('add');
 
-
+  const handleOpen = (mode) => {
+    setModalMode(mode);
+    setIsOpen(true);
+  }
   
+  const handleSubmit = () => {
+    if(modalMode === "Add"){
+      console.log("modal mode Add");
+    }else{
+      console.log("modal mode Edit");
+    }
+  }
 
   return (
     <>
-      <NavBar />
-      <TableList />
-      <ModalForm />
+      <NavBar onOpen={() => handleOpen("add")} />
+      <TableList handleOpen={handleOpen} />
+      <ModalForm isOpen={isOpen} OnSubmit={handleSubmit} onClose={() => setIsOpen(false)} mode={modalMode} />
     </>
   )
 }

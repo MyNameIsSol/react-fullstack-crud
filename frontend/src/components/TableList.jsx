@@ -1,4 +1,4 @@
-function TableList() {
+function TableList({handleOpen}) {
     const clients = [
         {
             id: 1,
@@ -57,7 +57,7 @@ function TableList() {
                                 </button>
                             </td>
                             <td>
-                                <button className="btn btn-secondary">
+                                <button onClick={() => handleOpen('edit')} className="btn btn-secondary">
                                     Update
                                 </button>
                             </td>
