@@ -1,8 +1,11 @@
+// Handle database connection
 import pg from "pg"
 import env from "dotenv"
 
+env.config();
+
 //Connect to database
-const db = new pgClient({
+const db = new pg.Client({
     user: process.env.PG_USER,
     host: process.env.PG_HOST,
     database: process.env.PG_DATABASE,
@@ -17,4 +20,4 @@ db.on('error', (err) => {
     process.exit(-1);
 })
 
-export const query = (text, params) => db.query(text, params);
+export const query = (text, params) => db.query(text, params); //EXPORT DATABASE QUERY ABILITY FOR ALL BACKEND FILES
